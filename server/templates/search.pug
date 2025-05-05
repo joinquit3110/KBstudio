@@ -6,21 +6,22 @@ mixin resultItem(doc)
     .search-subtitle= doc.subtitle
     .search-title= doc.title
 
-// Show popular courses when no search query provided
+//- Show popular courses when no search query provided
 if !(req.query.q)
   .search-section= __('Popular Courses')
   for doc in config.search.popular
     +resultItem(search.docs[doc])
-// If a query exists but no results, show no-results
-else
-  if !search.results.length
-    .no-results
-      include ./svgs/abakus.svg
-      | No results found…
-  else
-    for doc in search.results
-      if doc.type === 'gloss'
-        //- You can directly search the glossary
-        .search-gloss!= doc.subtitle
-      else
-        +resultItem(doc)
+
+//- If a query exists but no results, show no-results
+if req.query.q && !search.results.length
+  .no-results
+    include ./svgs/abakus.svg
+    | No results found…
+
+//- Show search results when there are results
+if req.query.q && search.results.length
+  for doc in search.results
+    if doc.type === 'gloss'
+      .search-gloss!= doc.subtitle
+    if doc.type !== 'gloss'
+      +resultItem(doc)
