@@ -14,7 +14,7 @@ new MathigonStudioApp()
     .secure()
     .setup({
       sessionSecret: SESSION_SECRET,
-      mongodbUrl: MONGODB_URI
+      mongodb: MONGODB_URI
     })
     .accounts()  // Enable user accounts
     .get('/', (req, res) => res.render('home.pug', {courses: COURSES}))
