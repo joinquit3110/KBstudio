@@ -31,6 +31,7 @@
     "@mathigon/euclid": "1.2.0",
     "@mathigon/fermat": "1.1.20",
     "@mathigon/hilbert": "1.1.20",
+    "@mathigon/studio": "0.1.43",
     "@sendgrid/mail": "8.1.3",
     "@types/bcryptjs": "2.4.6",
     "@types/compression": "1.7.5",
