@@ -152,7 +152,7 @@ export class MathigonStudioApp {
         country: req.country, locale: req.locale, __: req.__, env: ENV, req,
         availableLocales: AVAILABLE_LOCALES, config: CONFIG, include,
         href: href.bind(undefined, req), basedir: __dirname + '/templates',
-        search: {docs: SEARCH_DOCS}, showCookieConsent, getCourse,
+        search: {docs: SEARCH_DOCS, results: []}, showCookieConsent, getCourse,
         cacheBust: (file: string) => cacheBust(file, req.locale),
         oAuthProviders: OAUTHPROVIDERS
       });
@@ -170,7 +170,8 @@ export class MathigonStudioApp {
     // Search Endpoint
     if (CONFIG.search.enabled) {
       this.get('/api/search', (req, res) => {
-        res.locals.search.results = search((req.query.q || '').toString());
+        const q = (req.query.q || '').toString();
+        res.locals.search.results = search(q) || [];
         res.render('search');
       });
     }
@@ -282,7 +283,7 @@ export class MathigonStudioApp {
       const recent = (await Progress.getRecentCourses(req.user.id)).slice(0, 6);
 
       const items = Math.min(4, 6 - recent.length);
-      const recommended = COURSES.filter(x => !progress.has(x)).slice(0, items);
+      const recommended = COURSES.filter(x => !progress.has(x.id)).slice(0, items);
 
       res.render('dashboard', {progress, recent, recommended, stats});
     });

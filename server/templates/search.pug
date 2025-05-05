@@ -6,11 +6,12 @@ mixin resultItem(doc)
     .search-subtitle= doc.subtitle
     .search-title= doc.title
 
-if !search.results
+// Show popular courses when no search query provided
+if !(req.query.q)
   .search-section= __('Popular Courses')
   for doc in config.search.popular
     +resultItem(search.docs[doc])
-
+// If a query exists but no results, show no-results
 else if !search.results.length
   .no-results
     include ./svgs/abakus.svg
