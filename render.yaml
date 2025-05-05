@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: khaBoom
+    env: node
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    plan: free
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: SESSION_SECRET
+        generateValue: true
+      - key: MONGODB_URI
+        value: mongodb+srv://joinquit:31102004@kbcluster.wok68pc.mongodb.net/khaBoom?retryWrites=true&w=majority&appName=KBCluster

@@ -228,3 +228,145 @@ x-modal#login {
     transform: translateX(-50%);
   }
 }
+
+
+// -----------------------------------------------------------------------------
+// Custom styles for KhaBoom Learning Platform
+
+.topic-sections {
+  margin: 2rem 0;
+  
+  .topic-section {
+    margin-bottom: 3rem;
+    
+    h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid #eee;
+    }
+  }
+}
+
+.course-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.course-card {
+  display: block;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+  text-decoration: none;
+  color: inherit;
+  
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+  }
+  
+  .course-thumbnail {
+    height: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  
+  .course-body {
+    padding: 1rem;
+    
+    h3 {
+      margin: 0 0 0.5rem;
+      font-size: 1.2rem;
+    }
+    
+    .description {
+      font-size: 0.9rem;
+      opacity: 0.8;
+      margin-bottom: 0.5rem;
+    }
+    
+    .level {
+      display: inline-block;
+      padding: 0.25rem 0.5rem;
+      font-size: 0.8rem;
+      background-color: #f0f0f0;
+      border-radius: 4px;
+      margin-top: 0.5rem;
+    }
+  }
+}
+
+.hero {
+  background: linear-gradient(135deg, #1F7AFF, #9467FE);
+  color: white;
+  padding: 4rem 2rem;
+  text-align: center;
+  margin-bottom: 3rem;
+  
+  h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+  
+  .subtitle {
+    font-size: 1.4rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+  }
+  
+  .buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    
+    .button {
+      padding: 0.75rem 2rem;
+      border-radius: 4px;
+      font-weight: 500;
+      text-decoration: none;
+      
+      &.blue {
+        background-color: white;
+        color: #1F7AFF;
+      }
+      
+      &.green {
+        background-color: rgba(255, 255, 255, 0.2);
+        color: white;
+        border: 2px solid white;
+      }
+    }
+  }
+}
+
+.more-courses {
+  text-align: center;
+  margin: 2rem 0;
+  
+  .button.outline {
+    border: 2px solid #1F7AFF;
+    color: #1F7AFF;
+    padding: 0.75rem 2rem;
+    border-radius: 4px;
+    font-weight: 500;
+    text-decoration: none;
+    display: inline-block;
+    
+    &:hover {
+      background-color: #1F7AFF;
+      color: white;
+    }
+  }
+}

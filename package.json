@@ -19,7 +19,11 @@
     "lint-fix": "eslint . --ext .ts,.js --fix",
     "test": "node tests/markdown/test.js",
     "example": "cd docs/example && npm run dev",
-    "translate": "node build/index.js --translate --all --key google-service-account.json"
+    "translate": "node build/index.js --translate --all --key google-service-account.json",
+    "build": "node build/index.js --assets --minify",
+    "start": "ts-node server/serve.ts",
+    "dev": "node build/index.js --assets --watch & nodemon --exec ts-node server/serve.ts",
+    "search": "node build/index.js --search"
   },
   "dependencies": {
     "@mathigon/boost": "1.2.27",

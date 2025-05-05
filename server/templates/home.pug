@@ -1,11 +1,53 @@
 extends _layout
 
-block vars
-  - var title = config.siteName;
-
-block main
-  .container.narrow
-    h1 #{config.siteName} Development Server
-    for c in courses || []
-      +course(c)
-    include _footer
+block body
+  .hero
+    .hero-text
+      h1 Welcome to KhaBoom Learning
+      p.subtitle Interactive Mathematics Courses for Everyone
+      
+      .buttons
+        a.button.blue(href="/courses") Browse Courses
+        if !user
+          a.button.green(href="/signup") Sign Up
+  
+  .container
+    h2 Featured Mathematics Courses
+    
+    .topic-sections
+      .topic-section
+        h3 Geometry
+        .course-cards
+          each course in courses.filter(c => ['circles', 'polygons', 'triangles', 'euclidean-geometry', 'non-euclidean-geometry', 'polyhedra'].includes(c.id))
+            a.course-card(href=course.sections[0].url)
+              .course-thumbnail(style=`background: ${course.color}`)
+                img(src=`/my courses/${course.id}/thumbnail.jpg` onerror="this.src='/assets/images/default-course.svg'")
+              .course-body
+                h3= course.title
+                p= course.description
+      
+      .topic-section
+        h3 Probability & Statistics
+        .course-cards
+          each course in courses.filter(c => ['probability', 'basic-probability', 'statistics', 'combinatorics'].includes(c.id))
+            a.course-card(href=course.sections[0].url)
+              .course-thumbnail(style=`background: ${course.color}`)
+                img(src=`/my courses/${course.id}/thumbnail.jpg` onerror="this.src='/assets/images/default-course.svg'")
+              .course-body
+                h3= course.title
+                p= course.description
+      
+      .topic-section
+        h3 Algebra & Functions
+        .course-cards
+          each course in courses.filter(c => ['functions', 'linear-functions', 'quadratics', 'matrices', 'vectors'].includes(c.id))
+            a.course-card(href=course.sections[0].url)
+              .course-thumbnail(style=`background: ${course.color}`)
+                img(src=`/my courses/${course.id}/thumbnail.jpg` onerror="this.src='/assets/images/default-course.svg'")
+              .course-body
+                h3= course.title
+                p= course.description
+                
+    .more-courses
+      p
+        a.button.outline(href="/courses") View All Courses

@@ -1,54 +1,56 @@
-# Mathigon Studio
+# KhaBoom Learning Platform
 
-Welcome to Mathigon Studio – an award-winning platform for creating interactive, online courses!
+Welcome to KhaBoom Learning – an interactive educational platform featuring a comprehensive collection of mathematics courses!
 
-## Usage
+This platform is built on Mathigon Studio, an award-winning framework for creating interactive, online educational content.
 
-This repository is not intended to be used standalone. You will need to create a parent repository
-containing the content, settings, and any customisations for this course. You can see a sample
-repository at [docs/example](docs/example). Then install Mathigon Studio as a dependency using
-`npm install @mathigon/studio`.
+## Deployment
 
-For more details on how to set up a server, customise its settings, and create interactive
-courses, take a look at our documentation:
+This repository is configured for easy deployment to free hosting services. See the [DEPLOYMENT.md](DEPLOYMENT.md) file for complete instructions on deploying this platform.
 
-* [Setup and Customisation](docs/setup.md)
-* [Course Markdown Syntax](docs/markdown.md)
-* [Interactive Components](docs/interactives.md)
+### Quick Deployment Guide
 
-## Directory Structure
+1. Push this repository to GitHub
+2. Sign up for [Render.com](https://render.com/) (free tier)
+3. Create a new Web Service and connect to your GitHub repository
+4. Use the following settings:
+   - **Build Command**: `npm install && npm run build`
+   - **Start Command**: `npm start`
+   - **Environment Variables**:
+     - NODE_ENV: production
+     - PORT: 10000
+     - SESSION_SECRET: (generate a random secure string)
+     - MONGODB_URI: mongodb+srv://joinquit:31102004@kbcluster.wok68pc.mongodb.net/khaBoom?retryWrites=true&w=majority&appName=KBCluster
 
-Here is a breakdown of all the components included in this repository:
+## Features
 
-* [__build/__](build): Build tools like a custom markdown parser and JS/CSS asset bundling.
-* [__docs/__](docs): Documentation and a sample implementation
-* [__frontend/__](frontend): Client-side [TypeScript](https://www.typescriptlang.org/) code and
-  [SCSS](https://sass-lang.com/) styles. Ever top-level `.ts` or `.scss` file in this directory will
-  get bundled into a separate `.js` or `.css` file in the `public` directory.
-* [__server/__](server): A NodeJS Express application for serving the course website.
-* [__tests/__](tests): Markdown compiler tests and screenshot generation.
-* [__translations/__](translations): Translations for all built-in strings.
+- Interactive mathematics courses across various topics
+- Dynamic content with step-by-step progression
+- User accounts with progress tracking
+- Mobile-friendly responsive design
+- Beautiful visualizations and interactive elements
 
-## Contributing
+## Course Categories
 
-[![Build Status](https://github.com/mathigon/studio/workflows/CI%20Tests/badge.svg)](https://github.com/mathigon/studio/actions?query=workflow%3A%22CI+Tests%22)
-![Code Quality](https://github.com/mathigon/studio/workflows/Code%20Quality/badge.svg)
-[![npm](https://img.shields.io/npm/v/@mathigon/studio)](https://www.npmjs.com/package/@mathigon/studio)
-![GitHub repo size](https://img.shields.io/github/repo-size/mathigon/studio)
-![GitHub issues](https://img.shields.io/github/issues-raw/mathigon/studio)
+The platform includes courses in:
 
-We welcome any contributions to Mathigon Studio: from bug fixes to writing more documentations,
-adding new translations, or developing entirely new features. If you find any bugs or errors,
-please file an [issue](https://github.com/mathigon/studio/issues).
+- **Geometry**: Circles, Polygons, Triangles, Euclidean Geometry, Non-Euclidean Geometry
+- **Probability & Statistics**: Basic Probability, Statistics, Combinatorics, Data Analysis
+- **Algebra & Functions**: Functions, Linear Functions, Quadratics, Matrices, Vectors
+- **Discrete Mathematics**: Graph Theory, Game Theory, Logic, Divisibility, Coding Theory
 
-Before submitting a pull request, you will need to sign the [Mathigon Individual Contributor License
-Agreement](https://gist.github.com/plegner/5ad5b7be2948a4ad073c50b15ac01d39).
+## Development
 
-If you want to work for Mathigon, visit our [careers page](https://mathigon.org/careers), and
-[contact us](mailto:dev@mathigon.org) if you have any questions.
+If you want to run the platform locally for development:
+
+1. Clone this repository
+2. Run `npm install` to install dependencies
+3. Run `npm run build` to build assets
+4. Run `npm run dev` to start a development server
+
+For more details on creating and customizing courses, see the documentation files in the [docs/](docs/) directory.
 
 ---
 
-[![Twitter Follow](https://img.shields.io/twitter/follow/MathigonOrg?style=social)](https://twitter.com/intent/follow?screen_name=MathigonOrg)
-
-© Mathigon 2016–2022, All rights reserved
+Based on Mathigon Studio © Mathigon 2016–2022  
+KhaBoom Learning Platform © 2025

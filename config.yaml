@@ -4,12 +4,15 @@
 # ==============================================================================
 
 
-siteName: Mathigon Studio
-privacyURL: https://amplify.com/customer-privacy
-banner: (c) Mathigon
-locales: [en]
+siteName: KhaBoom Learning
+description: Interactive learning platform
+domain: khaboom.onrender.com
 
-contentDir: content
+privacyURL: /policies
+banner: © KhaBoom Learning, 2025
+locales: [en, es, fr]
+
+contentDir: ["my courses"]
 
 search:
   enabled: true
@@ -18,23 +21,34 @@ sitemap: []
 
 header:
   logo: images/logo.svg
-  title: images/title.svg
-  links: []
+  title: KhaBoom Learning
+  links:
+    - title: Courses
+      icon: library
+      url: /courses
 
 social: {}
 
 footer:
-  rows: []
-  copyright: © Mathigon, 2022
+  rows:
+    - links:
+        - title: About
+          url: /about
+        - title: Courses
+          url: /courses
+  copyright: © KhaBoom Learning, 2025
 
 courses:
-  revealAll: false
+  revealAll: true
   audio: false
 
 accounts:
-  enabled: false
+  enabled: true
+  minAge: 13
+  privacyPolicy: /policies
+  termsOfUse: /policies
 
 tutor:
   enabled: true
-  name: Archie
+  name: Tutor
   icon: images/archie.svg
