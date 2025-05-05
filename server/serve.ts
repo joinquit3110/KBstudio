@@ -30,18 +30,24 @@ new MathigonStudioApp()
   .secure()
   .setup({ 
     sessionSecret: SESSION_SECRET, 
-    sessionStore: mongoStore 
+    sessionStore: mongoStore,
   })
   .use(async (req, res, next) => {
     res.locals.messages = res.locals.messages || {};
     res.locals.messages.page = res.locals.messages.page || [];
     next();
   })
+  .get('/', (req, res) => res.render('home.pug', {
+    courses: COURSES,
+    page: { title: 'Home', sections: [] }
+  }))
+  .get('/courses', (req, res) => res.render('courses.pug', {
+    courses: COURSES,
+    page: { title: 'All Courses', sections: [] }
+  }))
   .accounts()
-  .get("/",        (req, res) => res.render("home.pug",    { courses: COURSES }))
-  .get("/courses", (req, res) => res.render("courses.pug", { courses: COURSES }))
   .course({})
   .errors()
   .listen(PORT);
 
-console.log(`🚀  Running on port ${PORT} (${process.env.NODE_ENV || "dev"})`);
+console.log(`Server started on port ${PORT} in ${process.env.NODE_ENV || 'development'} mode`);

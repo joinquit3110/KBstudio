@@ -86,7 +86,17 @@ export const CONTENT_DIR = path.join(PROJECT_DIR, CONFIG.contentDir);
 
 // List of all courses
 export const COURSES = fs.readdirSync(CONTENT_DIR)
-    .filter(id => id !== 'shared' && !id.includes('.') && !id.startsWith('_'));
+    .filter(id => id !== 'shared' && !id.includes('.') && !id.startsWith('_'))
+    .map(id => {
+      const course = getCourse(id);
+      return course || { 
+        id, 
+        title: id.charAt(0).toUpperCase() + id.slice(1).replace(/-/g, ' '),
+        description: '',
+        color: '#' + Math.floor(Math.random() * 16777215).toString(16), 
+        sections: [{url: `/course/${id}`}] 
+      };
+    });
 
 
 // -----------------------------------------------------------------------------
