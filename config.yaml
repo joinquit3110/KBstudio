@@ -12,7 +12,7 @@ privacyURL: /policies
 banner: © KhaBoom Learning, 2025
 locales: [en, es, fr]
 
-contentDir: ["my courses"]
+contentDir: "my courses"
 
 search:
   enabled: true
