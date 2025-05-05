@@ -1,4 +1,11 @@
 {
   "extends": "../node_modules/@mathigon/studio/frontend/tsconfig.json",
-  "exclude": ["../node_modules"]
+  "exclude": ["../node_modules"],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@mathigon/studio": [".."],
+      "@mathigon/studio/*": ["../*"]
+    }
+  }
 }
