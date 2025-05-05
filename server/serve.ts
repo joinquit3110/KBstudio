@@ -12,8 +12,8 @@ if (!MONGODB_URI) throw new Error("⚠️  Missing MONGODB_URI env var.");
 let mongoStore;
 try {
   mongoStore = MongoStore.create({
-    mongoUrl       : MONGODB_URI,
-    dbName         : "khaBoom",
+    mongoUrl       : process.env.MONGODB_URI,
+    dbName         : "khaBoom",  
     collectionName : "studio_sessions",
     ttl            : 14 * 24 * 60 * 60
   });
@@ -28,7 +28,15 @@ try {
 
 new MathigonStudioApp()
   .secure()
-  .setup({ sessionSecret: SESSION_SECRET, sessionStore: mongoStore })
+  .setup({ 
+    sessionSecret: SESSION_SECRET, 
+    sessionStore: mongoStore 
+  })
+  .use(async (req, res, next) => {
+    res.locals.messages = res.locals.messages || {};
+    res.locals.messages.page = res.locals.messages.page || [];
+    next();
+  })
   .accounts()
   .get("/",        (req, res) => res.render("home.pug",    { courses: COURSES }))
   .get("/courses", (req, res) => res.render("courses.pug", { courses: COURSES }))

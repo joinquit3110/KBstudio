@@ -35,12 +35,5 @@ node_modules/
 public
 screenshots
 
-# Environment and Secret Files
-.env
-.env.local
-.env.development
-.env.test
-.env.production
-
 # Private Keys
 google-service-account.json

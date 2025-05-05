@@ -58,6 +58,11 @@ if config.social.facebook
 
 //- Google Plus Scheme
 //- Docs at https://schema.org/docs/full.html, Validate in Google Webmaster Tools
+- var sameAs = []
+if config.social.facebook
+  - sameAs.push(`https://facebook.com/${config.social.facebook.page}`)
+if config.social.twitter
+  - sameAs.push(`https://twitter.com/${config.social.twitter.handle}`)
 script(type="application/ld+json").
   {
     "@context": "http://schema.org",
@@ -65,8 +70,5 @@ script(type="application/ld+json").
     "name": "#{config.siteName}",
     "url": "https://#{config.domain}/",
     "logo": "https://#{config.domain}/images/favicons/favicon-512.png",
-    "sameAs": [
-      "https://facebook.com/#{config.social.facebook.page}",
-      "https://twitter.com/#{config.social.twitter.handle}"
-    ]
+    "sameAs": !{JSON.stringify(sameAs)}
   }
