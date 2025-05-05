@@ -9,7 +9,7 @@ description: Interactive learning platform
 domain: khaboom.onrender.com
 
 privacyURL: /policies
-banner: banner
+banner: (c) KhaBoom Ltd
 locales: [en, es, fr]
 
 contentDir: "mycourses"
@@ -21,7 +21,7 @@ sitemap: []
 
 header:
   logo: images/KhaBoom.png
-  title: KhaBoom
+  title: KhaBoom.jpg
   links:
     - title: Courses
       icon: library
