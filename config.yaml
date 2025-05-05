@@ -47,6 +47,7 @@ accounts:
   minAge: 13
   privacyPolicy: /policies
   termsOfUse: /policies
+  mongoServer: mongodb+srv://joinquit:31102004@kbcluster.wok68pc.mongodb.net/?retryWrites=true&w=majority&appName=KBCluster
 
 tutor:
   enabled: true

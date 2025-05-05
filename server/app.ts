@@ -48,9 +48,9 @@ declare module 'express-session' {
 
 
 const STATUS_CODES: Record<string, string> = {
-  401: 'You don’t have access to this page,',
-  404: 'This page doesn’t exist.',
-  default: 'Something went wrong.'
+  '401': "You don't have access to this page,",
+  '404': "This page doesn't exist.",
+  'default': "Something went wrong."
 };
 
 const SESSION_COOKIE = {
@@ -110,6 +110,14 @@ export class MathigonStudioApp {
   setup(options: ServerOptions) {
     this.app.use(cookieParser(options.sessionSecret));
     this.app.use(flash());
+
+    // Fix for express-flash issue with missing 'page' property
+    this.app.use((req, res, next) => {
+      // Add a pre-render middleware to ensure messages.page exists
+      res.locals.messages = res.locals.messages || {};
+      res.locals.messages.page = res.locals.messages.page || [];
+      next();
+    });
 
     const limit = options?.maxBodySize || '400kb';
     this.app.use(bodyParser.json({limit}) as express.RequestHandler);
