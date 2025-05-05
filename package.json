@@ -20,9 +20,9 @@
     "test": "node tests/markdown/test.js",
     "example": "cd docs/example && npm run dev",
     "translate": "node build/index.js --translate --all --key google-service-account.json",
-    "build": "node build/index.js --assets --minify",
-    "start": "ts-node server/serve.ts",
-    "dev": "node build/index.js --assets --watch & nodemon --exec ts-node server/serve.ts",
+    "build": "node build/index.js --assets --minify --search",
+    "start": "ts-node --files --skipIgnore server/serve.ts",
+    "dev": "node build/index.js --assets --watch & nodemon --exec ts-node --files server/serve.ts",
     "search": "node build/index.js --search"
   },
   "dependencies": {
@@ -55,6 +55,7 @@
     "cookie-parser": "1.4.6",
     "cssnano": "6.1.2",
     "date-fns": "2.30.0",
+    "dotenv": "^16.5.0",
     "esbuild": "0.23.0",
     "express": "4.19.2",
     "express-flash": "0.0.2",
