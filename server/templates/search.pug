@@ -12,7 +12,7 @@ if !(req.query.q)
   for doc in config.search.popular
     +resultItem(search.docs[doc])
 // If a query exists but no results, show no-results
-else if !search.results.length
+else if (!search.results.length)
   .no-results
     include ./svgs/abakus.svg
     | No results found…
