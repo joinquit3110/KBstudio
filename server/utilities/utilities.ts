@@ -86,17 +86,16 @@ export const CONTENT_DIR = path.join(PROJECT_DIR, CONFIG.contentDir);
 
 // List of all courses
 export const COURSES = fs.readdirSync(CONTENT_DIR)
-    .filter(id => id !== 'shared' && !id.includes('.') && !id.startsWith('_'))
-    .map(id => {
-      const course = getCourse(id);
-      return course || { 
-        id, 
-        title: id.charAt(0).toUpperCase() + id.slice(1).replace(/-/g, ' '),
-        description: '',
-        color: '#' + Math.floor(Math.random() * 16777215).toString(16), 
-        sections: [{url: `/course/${id}`}] 
-      };
-    });
+  .filter(id => id !== 'shared' && !id.includes('.') && !id.startsWith('_'))
+  .map(id => {
+    const metaPath = path.join(CONTENT_DIR, id, 'meta.yaml');
+    const meta = loadYAML(metaPath) as any || {};
+    const { title = id, description = '', color = '#888' } = meta;
+    const url = `/course/${id}`;
+    if (!meta.sections) meta.sections = [{ url }];
+    const course: Partial<Course> = { id, title, description, color, sections: meta.sections };
+    return course as Course;
+  });
 
 
 // -----------------------------------------------------------------------------
