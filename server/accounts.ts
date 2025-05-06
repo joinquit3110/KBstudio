@@ -266,6 +266,15 @@ function redirect(req: express.Request, res: express.Response, data: ResponseDat
 
 export default function setupAuthEndpoints(app: MathigonStudioApp) {
 
+  app.use(async (req: express.Request, res: express.Response, next: express.NextFunction) => {
+    res.locals.messages = res.locals.messages || {};
+    res.locals.messages.page = res.locals.messages.page || [];
+    res.locals.messages.success = res.locals.messages.success || [];
+    res.locals.messages.errors = res.locals.messages.errors || [];
+    res.locals.messages.info = res.locals.messages.info || [];
+    next();
+  });
+
   app.get('/login', (req, res) => {
     if (req.user) return res.redirect('/dashboard');
     res.render('accounts/login');
