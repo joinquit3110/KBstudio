@@ -30,12 +30,13 @@ const studio = new MathigonStudioApp()
   .accounts()                                   // bind account routes first
 
   // custom middleware (must return Promise<void>)
-  .use(async (req: Request, res: Response, next: NextFunction) => {
-    res.locals.messages = res.locals.messages || {};
-    res.locals.messages.page = res.locals.messages.page || [];
+  .use(async (req, res, next) => {
+    // ensure res.locals.messages always has these three arrays
+    res.locals.messages        = res.locals.messages || {};
+    res.locals.messages.page   = res.locals.messages.page   || [];
     res.locals.messages.success = res.locals.messages.success || [];
-    res.locals.messages.errors = res.locals.messages.errors || [];
-    res.locals.messages.info = res.locals.messages.info || [];
+    res.locals.messages.errors  = res.locals.messages.errors  || [];
+    res.locals.messages.info    = res.locals.messages.info    || [];
     next();
   })
 

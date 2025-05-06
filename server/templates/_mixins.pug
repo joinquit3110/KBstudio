@@ -30,7 +30,7 @@ mixin flash(messages)
       button.close: x-icon(name="close")
       for info in messages.info
         p= info
-  if messages && messages.success && messages.success.length
+  if messages && (messages.success || []).length
     .alert.success
       button.close: x-icon(name="close")
       for success in messages.success
