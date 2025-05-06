@@ -15,7 +15,7 @@ locales: [en, es, fr]
 contentDir: "mycourses"
 
 search:
-  enabled: true
+  enabled: false
 
 sitemap: []
 
